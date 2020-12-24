@@ -1,0 +1,17 @@
+.videoRow {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+  max-width: 700px;
+}
+.videoRow__image {
+  object-fit: contain;
+  widows: 246px;
+  height: 138px;
+}
+.videoRow__text {
+  margin-left: 14px;
+}
+.videoRow__description{
+
+}
