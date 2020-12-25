@@ -1,17 +1,57 @@
 .videoRow {
   display: flex;
-  justify-content: center;
+    
   margin-bottom: 30px;
   max-width: 700px;
 }
+
 .videoRow__image {
   object-fit: contain;
   widows: 246px;
   height: 138px;
 }
+
 .videoRow__text {
   margin-left: 14px;
 }
-.videoRow__description{
 
+.videoRow__description {
+  margin-top: 10px;
+  font-size: 12px;
+  color: gray;
+}
+
+.videoRow__headline {
+  font-size: 12px;
+  color: gray;
+}
+
+.videoRow__subsNumber {
+  color: rgb(84, 157, 211);
+  font-weight: bolder;
+}
+
+.videoRow__subs {
+  background-color: lightgray;
+  padding: 2px;
+}
+
+.videoRow__channelInfo {
+  
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-direction: row;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  margin-top: 5px;
+  
+   
+}
+
+.videoRowChannel__logo {
+  height: 20px !important;
+  width: 20px !important;
+  justify-content: start !important;
+  margin: -2px 8px 8px 0px;
 }
