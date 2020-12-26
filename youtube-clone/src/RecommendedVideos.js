@@ -1,10 +1,24 @@
 import React from "react";
+import RecommendedLinks from "./RecommendedLinks";
 import "./RecommendedVideos.css";
 import VideoCard from "./VideoCard";
 
 function RecommendedVideos() {
   return (
     <div className="recommended-videos">
+      <hr />
+      <div className="recommended-links">
+        <RecommendedLinks buttonText="All" selected />
+        <RecommendedLinks buttonText="Javascript" />
+        <RecommendedLinks buttonText="Angular" />
+        <RecommendedLinks buttonText="ReactJs" />
+        <RecommendedLinks buttonText="Python" />
+         
+        <RecommendedLinks buttonText="API's" />
+        <RecommendedLinks buttonText="ComputerAnalytics" />
+     
+      </div>
+      <hr />
       <h2>Recommended</h2>
       <div className="recommended-videos__videos">
         <VideoCard
