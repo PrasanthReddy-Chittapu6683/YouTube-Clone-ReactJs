@@ -33,7 +33,7 @@
     width: 40%;
     border: 1px solid black;
     flex: 0 1 728px;
-    min-width: 200px;
+    min-width: 65vh;
 }
 
 .header__icons {

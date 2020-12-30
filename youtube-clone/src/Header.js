@@ -13,7 +13,7 @@ function Header() {
   return (
     <div className="header">
       <div className="header__left">
-        <MenuIcon className="header__menuIcon"/>
+        <MenuIcon className="header__menuIcon" />
         <Link to="/">
           <img
             className="header__logo"
@@ -33,7 +33,7 @@ function Header() {
           <SearchIcon className="header__input-button" />
         </Link>
       </div>
-      <div id="voice-search-button" class="style-scope ytd-masthead"></div>
+      <div id="voice-search-button" className="style-scope ytd-masthead"></div>
       <div className="header__icons">
         <VideoCallIcon className="header__icon" />
         <AppsIcon className="header__icon" />
