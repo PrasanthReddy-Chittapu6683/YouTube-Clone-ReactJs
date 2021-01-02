@@ -11,6 +11,7 @@
 .channelRow__text {
   display: flex;
   flex-direction: column;
+  max-width: 100vh;
 }
 .channelRow__text > p {
   color: #606060;

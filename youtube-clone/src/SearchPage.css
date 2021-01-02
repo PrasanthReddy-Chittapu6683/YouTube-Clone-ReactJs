@@ -25,3 +25,15 @@
 .searchPage__filter > h2 {
   margin-left: 10pxsks;
 }
+h3{
+  display: flex;
+  align-items: center;
+  color: #606060;
+  font-size: small !important;
+  text-transform: capitalize;
+  font-style: italic;
+}
+.searchPage__videos {
+  display: flex;
+  flex-wrap: wrap;
+}

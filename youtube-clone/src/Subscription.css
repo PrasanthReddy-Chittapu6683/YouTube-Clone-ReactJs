@@ -1,28 +1,113 @@
-.searchPage {
-    flex: 0.8;
-    background-color: #f9f9f9;
-    padding: 20px 20px;
-  }
-  .searchPage > hr {
-    height: 1px;
-    border: 0;
-    background-color: lightgray;
-    margin-top: 10px;
-    margin-bottom: 10px;
-  }
-  .searchPage > h4 {
-      margin-top: 20px;
-      margin-bottom: 20px;
-      font-style: normal;
-  }
-  .searchPage__filter {
-    display: flex;
-    align-items: center;
-    color: #606060;
-    font-size: xx-small !important;
-  }
-  
-  .searchPage__filter > h2 {
-    margin-left: 10pxsks;
-  }
-  
+.subscription {
+  flex: 0.8;
+  background-color: #f9f9f9;
+  padding: 20px 20px;
+}
+.subscription > hr {
+  height: 1px;
+  border: 0;
+  background-color: lightgray;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.subscription > h4 {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-style: normal;
+}
+.subscription__filter {
+  display: flex;
+  align-items: center;
+  color: #606060;
+  font-size: xx-small !important;
+}
+
+.subscription__filter > h2 {
+  margin-left: 10pxsks;
+}
+
+.subscription__subsLogo {
+  height: 80px !important;
+  width: 80px !important;
+  margin: 10px 0px;
+}
+.subscriptions__list {
+  display: flex;
+  justify-content: flex-start;
+  flex: 0.2 1;
+  flex-direction: row;
+  border-right: 1px solid #f9f9f9;
+}
+.subscription__dtls {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin-top: 3px;
+}
+.subscription__dtls > span {
+  font-size: 12px;
+  margin: 10px;
+}
+.subscription__avatarlist {
+  flex: 0.3;
+  border-right: 1px solid lightgrey;
+  max-height: 107vh;
+  overflow: auto;
+}
+
+.subscription__avatarlist::-webkit-scrollbar {
+  display: none !important;
+}
+/* Hide scrollbar for Chrome, Safari and Opera */
+.subscription::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.subscription {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.subscription__details {
+  flex: 0.8 1;
+  background-color: #f9f9f9;
+  padding: 20px 20px;
+  max-height: 107vh;
+  overflow: auto;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.subscription__details::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.subscription__details {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+.subscription__dtls > a{
+  text-transform: none;
+
+}
+
+.channel__logoDetails {
+  display: flex;
+  align-items: center;
+}
+.channelRow__Verified__icon{
+  color: #7d7d7d;
+  font-size: 16px !important;
+  margin-left: 5px;
+}
+.MuiButton-containedPrimary{
+  background-color: #0898e4 !important;
+}
+
+.viewChannel__button {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex: 0.9 1;
+}

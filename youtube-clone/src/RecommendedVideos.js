@@ -12,8 +12,7 @@ function RecommendedVideos() {
   })
   const [isLoading, setIsLoading] = useState(true)
   const loadVidoes = async () => {
-
-    const response = await youtube.get('/search', {
+    const response = await youtube.get('videos?/search', {
       params: { 
         part: "snippet, contentDetails, statistics",
         chart: 'mostPopular',

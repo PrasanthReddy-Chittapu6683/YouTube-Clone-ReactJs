@@ -1,0 +1,45 @@
+.ChannelVideos {
+    display:flex;
+    margin-bottom: 40px;
+    align-items: center;
+}
+
+.ChannelVideos__thumbnail {
+    height: 140px;
+    width: 250px;
+}
+
+.ChannelVideos__info {
+    display: flex;
+    margin-left: 10px;
+    align-items: center;
+}
+
+.ChannelVideos-card__avatar {
+    height: 30px !important;
+    width: 30px !important;
+}
+
+.ChannelVideos__text {
+    margin-left: 15px;
+}
+
+.ChannelVideos__text>h4 {
+    font-size: 14px;
+    margin-bottom: 5px;
+
+}
+.ChannelVideos__channelDetails{
+    display:flex;
+}
+.ChannelVideos__channelVerified{
+    font-size: 15px  !important;
+    margin: 2px 2px !important;
+}
+.ChannelVideos__text>p {
+    font-size: 12px;
+    color: gray;
+}
+.ChannelVideos__timestamp{
+    margin-left: 2px;
+}

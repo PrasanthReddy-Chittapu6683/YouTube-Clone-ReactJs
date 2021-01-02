@@ -1,59 +1,99 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./SearchPage.css";
 import TuneIcon from "@material-ui/icons/Tune";
 import ChannelRow from "./ChannelRow";
 import VideoRow from "./VideoRow";
+import { useParams } from "react-router";
+import youtube from "./APIS/youtube";
+import VideoCard from "./VideoCard";
+
 function SearchPage() {
+  const { searchTerm } = useParams();
+  //https://youtube.googleapis.com/youtube/v3/search? part = snippet & maxResults=25 & q=Codevolution & key=[YOUR_API_KEY]
+  const [getVidoes, setGetVidoes] = useState({
+    videos: [],
+    selectedVideos: null
+  })
+  //https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=Codevolution&key=[YOUR_API_KEY] HTTP/1.1
+
+  const loadVidoes = async () => {
+
+    const response = await youtube.get('/search', {
+      params: {
+        part: "snippet",
+        maxResults: 50,
+        q: searchTerm
+
+      }
+    })
+    // q: 'Codevolution' 
+    setGetVidoes({ videos: response?.data?.items })
+
+    //console.log(getVidoes)
+  }
+  useEffect(() => {
+    loadVidoes();
+    return () => {
+
+    }
+  }, [])
+  //https://youtube.googleapis.com/youtube/v3/subscriptions?part=id%2Csnippet%2CcontentDetails%2CsubscriberSnippet&mine=true&key=[YOUR_API_KEY] HTTP/1.1
+
   return (
     <div className="searchPage">
       <div className="searchPage__filter">
         <TuneIcon />
-        <h2>FILTER</h2>
+        <h2>FILTER </h2>
       </div>
+      {
+        getVidoes.videos.length > 0 ?
+          <ChannelRow
+            image={
+              getVidoes.videos[0].snippet?.thumbnails?.maxres?.url ||
+              getVidoes.videos[0]?.snippet?.thumbnails?.high?.url ||
+              getVidoes.videos[0]?.snippet?.thumbnails?.standard?.url ||
+              getVidoes.videos[0]?.snippet?.thumbnails?.medium?.url ||
+              getVidoes.videos[0]?.snippet?.thumbnails?.default?.url
+            }
+            channel={getVidoes.videos[0]?.snippet?.channelTitle}
+            channelDetails={getVidoes.videos[0]}
+            verified
+            subs="238K"
+            noOfVideos={382}
+            description={getVidoes.videos[0]?.snippet?.description}
+          ></ChannelRow>
+          : <></>
+      }
+
       <hr />
-
-      <ChannelRow
-        image="https://yt3.ggpht.com/ytc/AAUvwnj5vbwTemGpOuabZnfkl_tDzb_Fldf_CSMW2cg3=s176-c-k-c0x00ffffff-no-rj-mo"
-        channel="Codevolution"
-        verified
-        subs="238K"
-        noOfVideos={382}
-        description="Tutorials on the latest tech in web development!"
-      ></ChannelRow>
+      <h3> Latest from {searchTerm}</h3>
       <hr />
-      <h4>Latest from Codevolution</h4>
-      <VideoRow
-        views="1.4"
-        channel="Codevolution"
-        subs="659K"
-        timestamp="1 hour ago"
-        description="Tutorials on the latest tech in web development!"
-        title="ReactJS Tutorial for Beginners"
-        channelImage="https://yt3.ggpht.com/ytc/AAUvwnj5vbwTemGpOuabZnfkl_tDzb_Fldf_CSMW2cg3=s176-c-k-c0x00ffffff-no-rj-mo"
-        image="https://i.ytimg.com/vi/QFaFIcGhPoM/hqdefault.jpg?sqp=-oaymwEXCNACELwBSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLBYZxZ2Jb0KTRgbzqGAQ-SmuHjOLg"
-      />
+      <div className="searchPage__videos">
 
-      <VideoRow
-        views="1.4"
-        channel="Codevolution"
-        subs="659K"
-        timestamp="1 hour ago"
-        description="Tutorials on the latest tech in web development!"
-        title="ReactJS Tutorial for Beginners"
-        channelImage="https://yt3.ggpht.com/ytc/AAUvwnj5vbwTemGpOuabZnfkl_tDzb_Fldf_CSMW2cg3=s176-c-k-c0x00ffffff-no-rj-mo"
-        image="https://i.ytimg.com/vi/OcA4wWJIMTY/hq720.jpg?sqp=-oaymwEZCOgCEMoBSFXyq4qpAwsIARUAAIhCGAFwAQ==&rs=AOn4CLBvP7ouh8OPOwDQsWdsGSgymhT06Q"
-      />
+        {
+          getVidoes.videos.map((video, index) => (
+            <VideoCard
+              key={index}
+              channelId={video?.snippet?.channelId}
+              thumbnails={video?.snippet?.thumbnails?.maxres?.url ||
+                video?.snippet?.thumbnails?.high?.url ||
+                video?.snippet?.thumbnails?.standard?.url ||
+                video?.snippet?.thumbnails?.medium?.url ||
+                video?.snippet?.thumbnails?.default?.url
+              }
+               
+              title={video?.snippet?.title}
+              channel={video?.snippet?.channelTitle}
+              views=""
+              timestamp={video?.publishTime}
+              channelImage={video?.snippet?.thumbnails?.medium?.url}
+              videoDetails={video}
+            />
 
-      <VideoRow
-        views="1.4"
-        channel="Codevolution"
-        subs="59K"
-        timestamp="12 hour ago"
-        description="Tutorials on the latest tech in web development!"
-        title="Angular Tutorial For Beginners "
-        channelImage="https://yt3.ggpht.com/ytc/AAUvwnj5vbwTemGpOuabZnfkl_tDzb_Fldf_CSMW2cg3=s176-c-k-c0x00ffffff-no-rj-mo"
-        image="https://i.ytimg.com/vi/0eWrpsCLMJQ/hqdefault.jpg?sqp=-oaymwEXCNACELwBSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLBw_7ukFPt9_qVXgRxHMOeDjbDM9w"
-      />
+          ))
+        }
+      </div>
+
     </div>
   );
 }
