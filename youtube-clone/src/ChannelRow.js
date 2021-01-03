@@ -1,7 +1,7 @@
 import React from 'react'
 import './ChannelRow.css'
 import Avatar from "@material-ui/core/Avatar";
-    import VerifiedUserIcon from '@material-ui/icons/VerifiedUser';
+import VerifiedUserIcon from '@material-ui/icons/VerifiedUser';
 import Button from '@material-ui/core/Button';
 import NotificationsActiveIcon from '@material-ui/icons/NotificationsActive';
 import { Link } from 'react-router-dom';
@@ -17,13 +17,22 @@ function ChannelRow({ image, channel, verified, subs, noOfVideos, description, c
     return (
 
         <div className="channelRow" >
-            <Link to={`/channel/${channelDetails?.id.channelId}`}>
+            {channelDetails?.id.channelId ?
+                <Link to={`/channel/${channelDetails?.id.channelId}`}>
+                    <Avatar
+                        className="channelRow__logo"
+                        alt={channel}
+                        src={image}
+                    />
+                </Link>
+                :
                 <Avatar
                     className="channelRow__logo"
                     alt={channel}
                     src={image}
                 />
-            </Link>
+            }
+
             <div className="channelRow__text">
                 <h4>{channel} {verified && <VerifiedUserIcon className="channelRow__text__icon" />}</h4>
                 <p>{subs} subscribers - {noOfVideos} videos</p>

@@ -29,7 +29,7 @@
 .subscription__subsLogo {
   height: 80px !important;
   width: 80px !important;
-  margin: 10px 0px;
+  margin: 10px 5px;
 }
 .subscriptions__list {
   display: flex;
@@ -65,14 +65,14 @@
 
 /* Hide scrollbar for IE, Edge and Firefox */
 .subscription {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
 .subscription__details {
   flex: 0.8 1;
   background-color: #f9f9f9;
-  padding: 20px 20px;
+  padding: 0px 20px;
   max-height: 107vh;
   overflow: auto;
 }
@@ -84,24 +84,50 @@
 
 /* Hide scrollbar for IE, Edge and Firefox */
 .subscription__details {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
-.subscription__dtls > a{
+.subscription__dtls > a {
   text-transform: none;
-
 }
-
+.channel__Details {
+  background-color: white;
+  z-index: 100;
+  border: 1px solid lightgrey;
+  margin-bottom: 7px;
+  position: sticky;
+}
+.channel__description {
+  font-size: 12px;
+  margin: 10px;
+}
+.channel__title {
+  font-size: 25px;
+  font-weight: bolder;
+}
+.channel__viewlabel {
+  margin: 10px 10px 10px 2px;
+  font-size: 17px;
+  color: #3e3e3e;
+}
+.channel__title > p {
+  font-size: 12px;
+  color: gray;
+  font-weight: 100;
+}
 .channel__logoDetails {
   display: flex;
   align-items: center;
+
+  top: 0;
 }
-.channelRow__Verified__icon{
+
+.channelRow__Verified__icon {
   color: #7d7d7d;
   font-size: 16px !important;
   margin-left: 5px;
 }
-.MuiButton-containedPrimary{
+.MuiButton-containedPrimary {
   background-color: #0898e4 !important;
 }
 

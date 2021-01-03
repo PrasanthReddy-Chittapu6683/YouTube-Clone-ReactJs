@@ -1,0 +1,61 @@
+.ChannelDetails {
+  margin: 10px;
+  flex: 0.8 1;
+  background-color: #f9f9f9;
+  padding-bottom: 0;
+  padding-left: 6px;
+  min-width: 100vh;
+}
+
+.Channel__BannerImage {
+  object-fit: cover;
+  margin-top: -240px;
+  vertical-align: middle;
+  border-style: none;
+  width: 100%;
+  object-fit: cover;
+  margin-top: -50px;
+  height: 300px;
+}
+.Channel__Logo {
+  height: 80px !important;
+  width: 80px !important;
+  margin: 10px 5px;
+}
+.Channel__LogoSection {
+  padding: 15px;
+  background-color: #e6e6e6;
+  -webkit-mask-image: linear-gradient(180deg,#e6e6e6,rgb(255 255 255 / 80%));
+}
+.Channel__LogoTitle {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.channel__title > p {
+  font-size: 14px;
+  color: #313131;
+  font-weight: 400;
+}
+.Channel__Verified__icon {
+  color: #7d7d7d;
+  font-size: 20px !important;
+  margin-left: 5px;
+}
+.ChannelSubscribe__button {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex: 0.9 1;
+}
+.MuiButton-containedPrimary {
+  background-color: #aa0707 !important;
+}
+.channel__subscription__icon {
+  color: #7d7d7d;
+  margin: 10px !important;
+  cursor: pointer;
+}
+.Channel__Tabs{
+    margin-top: 0px;
+}

@@ -70,7 +70,25 @@ function Subscription() {
     })
     setChannelBannerDetails(response?.data?.items)
   }
-
+  const nFormatter = (num, digits) => {
+    var si = [
+      { value: 1, symbol: "" },
+      { value: 1E3, symbol: "k" },
+      { value: 1E6, symbol: "M" },
+      { value: 1E9, symbol: "G" },
+      { value: 1E12, symbol: "T" },
+      { value: 1E15, symbol: "P" },
+      { value: 1E18, symbol: "E" }
+    ];
+    var rx = /\.0+$|(\.[0-9]*[1-9])0+$/;
+    var i;
+    for (i = si.length - 1; i > 0; i--) {
+      if (num >= si[i].value) {
+        break;
+      }
+    }
+    return (num / si[i].value).toFixed(digits).replace(rx, "$1") + si[i].symbol;
+  }
 
   return (
     <div className="subscription">
@@ -105,9 +123,8 @@ function Subscription() {
           <div className="channel__bannerDetails">
             {
               (channelBannerDetails && channelBannerDetails.length > 0) ?
-                <>
+                <div className="channel__Details">
                   <div className="channel__logoDetails">
-
                     <Avatar
                       className="subscription__subsLogo"
                       alt={channelBannerDetails[0]?.snippet?.title}
@@ -117,22 +134,38 @@ function Subscription() {
                         channelBannerDetails[0]?.snippet?.thumbnails?.medium?.url ||
                         channelBannerDetails[0]?.snippet?.thumbnails?.default?.url}
                     />
-                    <h2>{channelBannerDetails[0]?.brandingSettings?.channel?.title}</h2>
-                    <VerifiedUserIcon className="channelRow__Verified__icon " />
+                    <div className="channel__title">
+                      {channelBannerDetails[0]?.brandingSettings?.channel?.title}
+                      <VerifiedUserIcon className="channelRow__Verified__icon " />
+                      <p>
+                        {nFormatter(channelBannerDetails[0]?.statistics?.subscriberCount, 2)} subscribers • &nbsp;
+                        {nFormatter(channelBannerDetails[0]?.statistics?.videoCount, 2)} videos • &nbsp;
+                        {nFormatter(channelBannerDetails[0]?.statistics?.viewCount, 2)} views
+                      </p>
+                      <p></p>
+
+                    </div>
+
+                   
                     <div className="viewChannel__button">
                       <Button variant="contained" color="primary"> View Channel </Button>
-                      
                     </div>
+                    <br />
+                  </div>
+                  <div className="channel__description">
+                    <small>
+                      {channelBannerDetails[0]?.brandingSettings?.channel?.description}
+                    </small>
                   </div>
 
-                </>
+                </div>
                 : <></>
             }
           </div>
           {
             (channel_Videos && channel_Videos.length > 0) ?
               <>
-                <h4>Latest videos from {channel_Videos[0].snippet?.channelTitle}</h4>
+                <h4 className="channel__viewlabel"> Top videos from {channel_Videos[0].snippet?.channelTitle}</h4>
                 {channel_Videos.map((video, index) => (
 
                   <ChannelVideos
@@ -381,37 +414,7 @@ export const subscriptionsLst = [
       "activityType": "all"
     }
   },
-  {
-    "kind": "youtube#subscription",
-    "etag": "Sj6fE3iKBBJwjFxDkVLc1BhaaQ4",
-    "id": "_EK2sJ0KElZi1N06T9WpJDgGui9LTI8gTNCxD9EWAfs",
-    "snippet": {
-      "publishedAt": "2020-09-04T07:27:45.227401Z",
-      "title": "Clever Programmer",
-      "description": "You can find awesome programming lessons here! Also, expect programming tips and tricks that will take your coding skills to the next level.",
-      "resourceId": {
-        "kind": "youtube#channel",
-        "channelId": "UCqrILQNl5Ed9Dz6CGMyvMTQ"
-      },
-      "channelId": "UCyiis4UhYFQWjMZIxchKrEg",
-      "thumbnails": {
-        "default": {
-          "url": "https://yt3.ggpht.com/ytc/AAUvwniwccxGvXvGzzwka5f73aPbmdxvEX4G_cUd7TEzkw=s88-c-k-c0x00ffffff-no-rj"
-        },
-        "medium": {
-          "url": "https://yt3.ggpht.com/ytc/AAUvwniwccxGvXvGzzwka5f73aPbmdxvEX4G_cUd7TEzkw=s240-c-k-c0x00ffffff-no-rj"
-        },
-        "high": {
-          "url": "https://yt3.ggpht.com/ytc/AAUvwniwccxGvXvGzzwka5f73aPbmdxvEX4G_cUd7TEzkw=s800-c-k-c0x00ffffff-no-rj"
-        }
-      }
-    },
-    "contentDetails": {
-      "totalItemCount": 513,
-      "newItemCount": 1,
-      "activityType": "all"
-    }
-  },
+ 
   {
     "kind": "youtube#subscription",
     "etag": "fHX-nhFb1MhmrcJJKvGSeqPcXxY",

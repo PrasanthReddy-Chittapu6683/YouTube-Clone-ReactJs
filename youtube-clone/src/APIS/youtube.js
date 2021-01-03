@@ -19,3 +19,8 @@ export default axios.create({
         key: KEY
     }
 })
+
+// .interceptors.response.use(undefined, error => {
+//     const { status, data, config, message } = error.response;
+//     console.log("Hey Error !!!")
+// })

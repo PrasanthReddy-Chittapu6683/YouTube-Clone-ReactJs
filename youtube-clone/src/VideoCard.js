@@ -44,11 +44,17 @@ function VideoCard({ thumbnails,
         <div className="videocard__text">
           <h4>{title}</h4>
           <p className="videocard__channelDetails">
-            {channel} 
-           {videoDetails?.contentDetails?.licensedContent && <CheckCircleIcon className="videocard__channelVerified"/>}
+            {channel}
+            {videoDetails?.contentDetails?.licensedContent && <CheckCircleIcon className="videocard__channelVerified" />}
           </p>
           <p >
-            {nFormatter(videoDetails?.statistics?.viewCount, 2)} views • 
+            {
+              videoDetails?.statistics?.viewCount ?
+                <> {nFormatter(videoDetails?.statistics?.viewCount, 2)} views •  </>
+                :
+                <></>
+            }
+
             <Moment className="videocard__timestamp" fromNow>{videoDetails?.snippet?.publishedAt}</Moment>
           </p>
         </div>

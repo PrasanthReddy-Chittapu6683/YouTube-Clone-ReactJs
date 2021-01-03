@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./SearchPage.css";
 import TuneIcon from "@material-ui/icons/Tune";
 import ChannelRow from "./ChannelRow";
-import VideoRow from "./VideoRow";
+// import VideoRow from "./VideoRow";
 import { useParams } from "react-router";
 import youtube from "./APIS/youtube";
 import VideoCard from "./VideoCard";
@@ -36,7 +36,7 @@ function SearchPage() {
     return () => {
 
     }
-  }, [])
+  }, [searchTerm])
   //https://youtube.googleapis.com/youtube/v3/subscriptions?part=id%2Csnippet%2CcontentDetails%2CsubscriberSnippet&mine=true&key=[YOUR_API_KEY] HTTP/1.1
 
   return (
