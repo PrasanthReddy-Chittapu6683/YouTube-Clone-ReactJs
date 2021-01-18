@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import SearchPage from "./SearchPage";
 import Subscription from "./Subscription";
 import ChannelDetails from "./ChannelDetails";
+import PlayVideos from "./PlayVideos";
 // https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=UC_x5XG1OV2P6uZZ5FSM9Ttw&key=[YOUR_API_KEY] HTTP/1.1
 // 
 function App() {
@@ -22,6 +23,10 @@ function App() {
             <Route path="/channel/:channelID">
               <Sidebar />
               <ChannelDetails />
+            </Route>
+            <Route path="/play/:type/:playID/:cID">
+              <Sidebar />
+              <PlayVideos />
             </Route>
             <Route path="/subscription">
               <Sidebar />

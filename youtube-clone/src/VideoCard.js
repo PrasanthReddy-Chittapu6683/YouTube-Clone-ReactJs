@@ -3,6 +3,9 @@ import "./VideoCard.css";
 import Avatar from "@material-ui/core/Avatar";
 import Moment from 'react-moment';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
+import { Link } from 'react-router-dom';
+import MoreVertIcon from '@material-ui/icons/MoreVert';
+
 function VideoCard({ thumbnails,
   title,
   channel,
@@ -10,7 +13,7 @@ function VideoCard({ thumbnails,
   timestamp,
   channelImage,
   channelId,
-  videoDetails }) {
+  videoDetails, videoType }) {
   const nFormatter = (num, digits) => {
     var si = [
       { value: 1, symbol: "" },
@@ -33,32 +36,39 @@ function VideoCard({ thumbnails,
 
   return (
     <div className="videocard">
+      <Link to={`/play/${videoType}/${videoDetails?.id}/${channelId}`} >
+      <div className="video__Panel">
+      
+        <img className="videcard__thumbnail" src={thumbnails} alt="" />
+          <div className="videocard__info">
+            <Avatar
+              className="videocard-card__avatar"
+              alt={channel}
+              src={channelImage}
+            />
+            <div className="videocard__text">
+            <div className="videocard__text__align">
+              <h4>{title} </h4>
+               <MoreVertIcon/>
+            </div>
+            <p className="videocard__channelDetails">
+                {channel}
+                {videoDetails?.contentDetails?.licensedContent && <CheckCircleIcon className="videocard__channelVerified" />}
+              </p>
+              <p >
+                {
+                  videoDetails?.statistics?.viewCount ?
+                    <> {nFormatter(videoDetails?.statistics?.viewCount, 2)} views •  </>
+                    :
+                    <></>
+                }
 
-      <img className="videcard__thumbnail" src={thumbnails} alt="" />
-      <div className="videocard__info">
-        <Avatar
-          className="videocard-card__avatar"
-          alt={channel}
-          src={channelImage}
-        />
-        <div className="videocard__text">
-          <h4>{title}</h4>
-          <p className="videocard__channelDetails">
-            {channel}
-            {videoDetails?.contentDetails?.licensedContent && <CheckCircleIcon className="videocard__channelVerified" />}
-          </p>
-          <p >
-            {
-              videoDetails?.statistics?.viewCount ?
-                <> {nFormatter(videoDetails?.statistics?.viewCount, 2)} views •  </>
-                :
-                <></>
-            }
-
-            <Moment className="videocard__timestamp" fromNow>{videoDetails?.snippet?.publishedAt}</Moment>
-          </p>
+                <Moment className="videocard__timestamp" fromNow>{videoDetails?.snippet?.publishedAt}</Moment>
+              </p>
+            </div>
+          </div>
         </div>
-      </div>
+      </Link>
     </div>
   );
 }

@@ -14,7 +14,7 @@ function RecommendedVideos() {
   const loadVidoes = async () => {
     const response = await youtube.get('videos?/search', {
       params: { 
-        part: "snippet, contentDetails, statistics",
+        part: "snippet,contentDetails,player,statistics,id",
         chart: 'mostPopular',
         regionCode: 'IN',
         maxResults: 50,
@@ -70,6 +70,7 @@ function RecommendedVideos() {
                 timestamp={video?.publishTime}
                 channelImage={video?.snippet?.thumbnails?.medium?.url}
                 videoDetails={video}
+                videoType='normal'
               />
 
             ))

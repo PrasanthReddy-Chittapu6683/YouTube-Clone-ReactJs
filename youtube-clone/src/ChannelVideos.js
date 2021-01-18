@@ -3,6 +3,7 @@ import './ChannelVideos.css'
 import Avatar from "@material-ui/core/Avatar";
 import Moment from 'react-moment';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
+import { Link } from 'react-router-dom';
 
 function ChannelVideos({ thumbnails,
     title,
@@ -11,7 +12,7 @@ function ChannelVideos({ thumbnails,
     timestamp,
     channelImage,
     channelId,
-    videoDetails }) {
+    videoDetails, videoType }) {
     const nFormatter = (num, digits) => {
         var si = [
             { value: 1, symbol: "" },
@@ -31,29 +32,33 @@ function ChannelVideos({ thumbnails,
         }
         return (num / si[i].value).toFixed(digits).replace(rx, "$1") + si[i].symbol;
     }
-   
+
     return (
         <div className="ChannelVideos">
-
-            <img className="ChannelVideos__thumbnail" src={thumbnails} alt="" />
-            <div className="ChannelVideos__info">
-                <Avatar
-                    className="ChannelVideos-card__avatar"
-                    alt={channel}
-                    src={channelImage}
-                />
-                <div className="ChannelVideos__text">
-                    <h4>{title}</h4>
-                    <p className="ChannelVideos__channelDetails">
-                        {channel}
-                        {videoDetails?.contentDetails?.licensedContent && <CheckCircleIcon className="ChannelVideos__channelVerified" />}
-                    </p>
-                    <p >
-                        {nFormatter(videoDetails?.statistics?.viewCount, 2)} views •
-            <Moment className="ChannelVideos__timestamp" fromNow>{videoDetails?.snippet?.publishedAt}</Moment>
-                    </p>
+            <Link to={`/play/${videoType}/${videoDetails?.id?.videoId}/${videoDetails?.snippet?.channelId}`}>
+                <img className="ChannelVideos__thumbnail" src={thumbnails} alt="" />
+                <div className="ChannelVideos__info">
+                    <Avatar
+                        className="ChannelVideos-card__avatar"
+                        alt={channel}
+                        src={channelImage}
+                    />
+                    <div className="ChannelVideos__text">
+                        <h4>{title}</h4>
+                        <p className="ChannelVideos__channelDetails">
+                            {channel}
+                            {videoDetails?.contentDetails?.licensedContent && <CheckCircleIcon className="ChannelVideos__channelVerified" />}
+                        </p>
+                        <p >
+                            {videoDetails?.statistics?.viewCount ?
+                                <>{nFormatter(videoDetails?.statistics?.viewCount, 2)} views •</>
+                                : <></>
+                            }
+                            <Moment className="ChannelVideos__timestamp" fromNow>{videoDetails?.snippet?.publishedAt}</Moment>
+                        </p>
+                    </div>
                 </div>
-            </div>
+            </Link>
         </div>
     )
 }

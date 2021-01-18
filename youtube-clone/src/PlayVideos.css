@@ -1,0 +1,16 @@
+.playvideos {
+  flex: 0.8;
+  background-color: #f9f9f9;
+  padding: 20px 20px;
+}
+.playvideos__page {
+  display: flex;
+}
+.playvideos__relatedvideos{
+    display: flex;
+    flex-direction: column;
+    margin: 50px;
+}
+.playvideos__Details{
+    
+}

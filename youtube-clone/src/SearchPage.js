@@ -22,7 +22,8 @@ function SearchPage() {
       params: {
         part: "snippet",
         maxResults: 50,
-        q: searchTerm
+        q: searchTerm,
+        type: "video"
 
       }
     })
@@ -81,13 +82,14 @@ function SearchPage() {
                 video?.snippet?.thumbnails?.medium?.url ||
                 video?.snippet?.thumbnails?.default?.url
               }
-               
+
               title={video?.snippet?.title}
               channel={video?.snippet?.channelTitle}
               views=""
               timestamp={video?.publishTime}
               channelImage={video?.snippet?.thumbnails?.medium?.url}
               videoDetails={video}
+              videoType='normal'
             />
 
           ))

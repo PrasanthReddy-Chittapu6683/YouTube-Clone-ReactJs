@@ -2,7 +2,7 @@
   background-color: transparent !important;
 }
 .MuiAppBar-colorDefault {
-  background-color: transparent !important;
+  background-color: #e6e6e6 !important;
   box-shadow: none !important;
 }
 .MuiTab-textColorPrimary {
@@ -32,8 +32,15 @@
   bottom: 0;
   position: relative;
 }
+.playlist > p {
+  padding-top: 69px;
+  position: absolute;
+  color: white;
+  padding-left: 187px;
+  cursor: pointer;
+}
 .playlist > span {
-    padding-top: 50px;
+  padding-top: 50px;
   position: absolute;
   background: #000000ab;
   height: 90px;
@@ -42,7 +49,10 @@
   line-height: normal;
   flex-direction: row;
 }
-.ChannelVideos{
-    width: 270px;
-    display:block !important;
+.ChannelVideos {
+  width: 270px;
+  display: block !important;
+}
+.MuiSvgIcon-root {
+  font-size: 30px;
 }

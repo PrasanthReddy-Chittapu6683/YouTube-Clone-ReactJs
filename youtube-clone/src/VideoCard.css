@@ -11,9 +11,12 @@
 .videocard__info {
     display: flex;
     margin-top: 10px;
-    padding-right: 30px;
+    /* padding-right: 30px; */
+    justify-content: space-evenly;
 }
-
+.videocard__text__align{
+    display: flex;
+}
 .videocard-card__avatar {
     height: 30px !important;
     width: 30px !important;
@@ -21,11 +24,13 @@
 
 .videocard__text {
     margin-left: 15px;
+    text-align: left;
 }
 
 .videocard__text>h4 {
     font-size: 14px;
     margin-bottom: 5px;
+        color: #030303;
 
 }
 .videocard__channelDetails{
@@ -37,8 +42,18 @@
 }
 .videocard__text>p {
     font-size: 12px;
-    color: gray;
+    color: #606060;
 }
 .videocard__timestamp{
     margin-left: 2px;
+}
+.video__Panel:hover{
+    /* border: 1px solid #eaeaea;
+    padding:5px; */
+    transform: scale(1.09);
+    opacity: 1;
+}
+.video__Panel{
+    object-fit: contain;
+    transition: transform .55s;
 }

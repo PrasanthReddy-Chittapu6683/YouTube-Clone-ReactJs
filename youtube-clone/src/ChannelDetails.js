@@ -69,7 +69,7 @@ function ChannelDetails() {
 
     return (
         <div className="ChannelDetails">
-            {channelID} - {channelDetails | JSON}
+            
             { (channelBannerDetails && channelBannerDetails.length > 0) ?
                 <>
                     <img className="Channel__BannerImage" src={channelBannerDetails[0]?.brandingSettings?.image?.bannerExternalUrl} alt="" />
@@ -92,7 +92,9 @@ function ChannelDetails() {
                                 </h2>
 
                                 <p>
-                                    {nFormatter(channelBannerDetails[0]?.statistics?.subscriberCount, 2)} subscribers
+                                    {nFormatter(channelBannerDetails[0]?.statistics?.subscriberCount, 2)} subscribers • &nbsp;
+
+                                    {nFormatter(channelBannerDetails[0]?.statistics?.videoCount, 2)} videos
                                 </p>
 
                             </div>

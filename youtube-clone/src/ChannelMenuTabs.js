@@ -10,7 +10,8 @@ import Box from '@material-ui/core/Box';
 import ChannelVideos from './ChannelVideos';
 import youtube from './APIS/youtube';
 import VideoCard from './VideoCard';
-
+import PlaylistPlayIcon from '@material-ui/icons/PlaylistPlay';
+import { Link } from '@material-ui/core';
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
 
@@ -79,7 +80,8 @@ function ChannelMenuTabs({ cID }) {
                 part: "snippet,id",
                 maxResults: 50,
                 channelId: cID,
-                order: "viewCount"
+                order: "viewCount",
+                type:"video"
 
             }
         })
@@ -142,6 +144,7 @@ function ChannelMenuTabs({ cID }) {
                                         timestamp={video?.publishTime}
                                         channelImage={video?.snippet?.thumbnails?.medium?.url}
                                         videoDetails={video}
+                                        videoType='normal'
                                     />
                                 ))}
 
@@ -159,30 +162,40 @@ function ChannelMenuTabs({ cID }) {
                         (channel_Playlist_Videos && channel_Playlist_Videos.length > 0) ?
                             <>
                                 {channel_Playlist_Videos.map((video, index) => (
-                                    <div className="playlist">
+                                    <div className="playlist" title="Play">
                                         <span>
-                                            Playlist
-                                        </span>
-                                        <VideoCard
-                                            key={index}
-                                            channelId={video?.snippet?.channelId}
-                                            thumbnails={video?.snippet?.thumbnails?.maxres?.url ||
-                                                video?.snippet?.thumbnails?.standard?.url ||
-                                                video?.snippet?.thumbnails?.medium?.url}
-                                            title={video?.snippet?.title}
-                                            channel={video?.snippet?.channelTitle}
-                                            views="5"
-                                            timestamp={video?.publishTime}
-                                            channelImage={video?.snippet?.thumbnails?.medium?.url}
-                                            videoDetails={video}
-                                        />
+                                            {video?.contentDetails?.itemCount}
 
+                                        </span>
+                                        <p>
+                                            <PlaylistPlayIcon />
+                                        </p>
+                                       
+                                            <VideoCard
+                                                key={index}
+                                                channelId={video?.snippet?.channelId}
+                                                thumbnails={video?.snippet?.thumbnails?.maxres?.url ||
+                                                    video?.snippet?.thumbnails?.standard?.url ||
+                                                    video?.snippet?.thumbnails?.medium?.url}
+                                                title={video?.snippet?.title}
+                                                channel={video?.snippet?.channelTitle}
+                                                views="5"
+                                                timestamp={video?.publishTime}
+                                                channelImage={video?.snippet?.thumbnails?.medium?.url}
+                                                videoDetails={video}
+                                                videoType='playlist'
+                                            />
+                                         
+                                        {/* <div>
+                                            {video?.player?.embedHtml}
+                                        </div> */}
                                     </div>
 
                                 ))}
 
                             </> : <></>
                     }
+                    {/* <iframe width="640" height="360" src="http://www.youtube.com/embed/videoseries?list=PL_euSNU_eLbdg0gKbR8zmVJb4xLgHR7BX" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> */}
                 </div>
 
             </TabPanel>

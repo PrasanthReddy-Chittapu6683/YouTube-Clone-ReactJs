@@ -51,7 +51,8 @@ function Subscription() {
         part: "snippet,id",
         maxResults: 50,
         channelId: cID,
-        order: "viewCount"
+        order: "viewCount",
+        type:"video"
 
       }
     })
@@ -146,9 +147,11 @@ function Subscription() {
 
                     </div>
 
-                   
+
                     <div className="viewChannel__button">
-                      <Button variant="contained" color="primary"> View Channel </Button>
+                      <Link to={`/channel/${channelBannerDetails[0]?.id}`}>
+                        <Button variant="contained" color="primary"> View Channel </Button>
+                      </Link>
                     </div>
                     <br />
                   </div>
@@ -180,6 +183,7 @@ function Subscription() {
                     timestamp={video?.publishTime}
                     channelImage={video?.snippet?.thumbnails?.medium?.url}
                     videoDetails={video}
+                    videoType='normal'
                   />
                 ))}
 
@@ -414,7 +418,7 @@ export const subscriptionsLst = [
       "activityType": "all"
     }
   },
- 
+
   {
     "kind": "youtube#subscription",
     "etag": "fHX-nhFb1MhmrcJJKvGSeqPcXxY",
